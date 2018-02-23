@@ -3,15 +3,22 @@ package by.htp.model;
 public class CardAccount extends Account{
 
 	private Card card;
+	private String accType = "����-����";
 	
 	public CardAccount(){
 		super();
+		this.setAccountType(accType);
 		this.card = new Card();	
 	}
 	
 	public CardAccount(int amount, String cardType){
 		super(amount);
+		this.setAccountType(accType);
 		this.card = new Card(cardType);	
+	}
+	
+	public static void setAccountType() {
+		
 	}
 	
 	public Card getCard(){
@@ -32,12 +39,30 @@ public class CardAccount extends Account{
 		
 	}
 	
+	public void printAccountInfo() {
+		printInfo();
+		System.out.println(accType);
+	}
+	
+	public void printAccountInfo(String accType) {
+		printInfo();
+		System.out.println(accType);
+	}
+	
+	public void printCardAccount(){
+		this.printAccountStateInfo();
+		this.getCard().printCardInfo();		
+	}
+	
 	@Override
 	public void printAccount(){
-		System.out.println("Карт-счет: ");
-		System.out.println("Остаток: " + this.getAccountAmount() + " Состояние: " + this.stringAccountState());
-		System.out.println("Карта: " + this.getCard().getCardType() + " Состояние карты: " + this.getCard().stringCardState());
-		System.out.println("-----------------------------------------------");
+		printAccountInfo();
+		printCardAccount();
+	}
+	
+	public void printAccount(String accType){
+		printAccountInfo(accType);
+		printCardAccount();
 	}
 	
 }

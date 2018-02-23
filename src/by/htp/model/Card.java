@@ -33,9 +33,14 @@ public class Card {
 	public String stringCardState(){
 		String str;
 		if(this.getCardState() == true)
-			str = "Р°РєС‚РёРІРЅР°";
+			str = "активна";
 		else
-			str = "Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°";
+			str = "заблокирована";
 		return str;
+	}
+	
+	public void printCardInfo(){
+		System.out.println("Карта: " + this.type);
+		System.out.println("Состояние карты: " + this.stringCardState());
 	}
 }

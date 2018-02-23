@@ -1,9 +1,8 @@
 package by.htp.model;
 
-import by.htp.logic.Actions;
+public abstract class Account implements AccountActions{
 
-public abstract class Account implements Actions{
-
+	private String accountType;
 	private int accountAmount;
 	private boolean accountState;
 		
@@ -16,12 +15,20 @@ public abstract class Account implements Actions{
 		this.accountState = true;
 	}
 	
+	public void setAccountType(String type){
+		this.accountType = type;
+	}
+	
 	public void setAccountAmount(int amount){
 		this.accountAmount = amount;
 	}
 	
 	public void setAccountState(boolean state){
 		this.accountState = state;
+	}	
+	
+	public String getAccountType(){
+		return accountType;
 	}
 	
 	public int getAccountAmount(){
@@ -43,10 +50,19 @@ public abstract class Account implements Actions{
 	public String stringAccountState(){
 		String str;
 		if(this.accountState == true)
-			str = "Р°РєС‚РёРІРµРЅ";
+			str = "активен";
 		else
-			str = "Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ";
+			str = "заблокирован";
 		return str;
 	}
 	
+	public static void printInfo() {
+		System.out.println("-----------------------------------------------");
+	}
+	
+	public void printAccountStateInfo(){
+		System.out.println("Остаток счета: " + this.getAccountAmount());
+		System.out.println("Состояние счета: " + this.stringAccountState());
+	}
+		
 }

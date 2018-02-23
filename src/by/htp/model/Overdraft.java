@@ -34,9 +34,14 @@ public class Overdraft {
 	public String stringOverdraftState(){
 		String str;
 		if(this.getOverdraftState() == true)
-			str = "Р°РєС‚РёРІРµРЅ";
+			str = "активен";
 		else
-			str = "Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ";
+			str = "заблокирован";
 		return str;
+	}
+	
+	public void printOverdraftInfo(){
+		System.out.println("Овердрафт: " + this.getOverdraftLimit());
+		System.out.println("Состояние овердрафта: " + this.stringOverdraftState());
 	}
 }

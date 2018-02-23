@@ -31,8 +31,8 @@ public class Client {
 	}
 	
 	public void printClient(){
-		System.out.println("РљР»РёРµРЅС‚: " + this.name + " " + this.surname);
-		System.out.println();
+		System.out.println("-----------------------------------------------");
+		System.out.println("Клиент: " + this.name + " " + this.surname);
 	}
 	
 }

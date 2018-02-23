@@ -2,19 +2,27 @@ package by.htp.model;
 
 public class DepositAccount extends Account{
 
+	private static String accType = "�������";
+	
 	public DepositAccount(){
-		
+		this.setAccountType(accType);
 	}
 	
 	public DepositAccount(int amount){
 		super(amount);
+		this.setAccountType(accType);
+	}
+	
+	public static void printAccountInfo() {
+		printInfo();
+		System.out.println(accType);
 	}
 	
 	@Override
 	public void printAccount(){
-		System.out.println("Депозит: ");
-		System.out.println("Остаток: " + this.getAccountAmount() + " Состояние: " + this.stringAccountState());
-		System.out.println("-----------------------------------------------");
+		printAccountInfo();
+		this.printAccountStateInfo();		
 	}
 	
+		
 }

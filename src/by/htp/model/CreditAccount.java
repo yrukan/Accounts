@@ -1,16 +1,19 @@
 package by.htp.model;
 
-public class CreditAccount extends Account{
+public class CreditAccount extends CardAccount{
 
 	private Overdraft overdraft;
-	
+	private String accType = "���� � �����������";
+		
 	public CreditAccount(){
-		super();
+		super();		
+		this.setAccountType(accType);
 		this.overdraft = new Overdraft();	
 	}
 	
-	public CreditAccount(int amount, int overdraftLimit){
-		super(amount);
+	public CreditAccount(int amount, String cardType, int overdraftLimit){
+		super(amount, cardType);
+		this.setAccountType(accType);
 		this.overdraft = new Overdraft(overdraftLimit);	
 	}
 	
@@ -20,24 +23,28 @@ public class CreditAccount extends Account{
 	
 	@Override
 	public void blockAccount(){
-		this.setAccountState(false);
+		super.blockAccount();
 		this.overdraft.setOverdraftState(false);
 		
 	}
 	
 	@Override
 	public void unblockAccount(){
-		this.setAccountState(true);
+		super.unblockAccount();
 		this.overdraft.setOverdraftState(true);
 		
 	}
 	
+	public void printAccountInfo() {
+		printInfo();
+		System.out.println(accType);
+	}
+	
 	@Override
 	public void printAccount(){
-		System.out.println("Счет с овердрафтом: ");
-		System.out.println("Остаток: " + this.getAccountAmount() + " Состояние: " + this.stringAccountState());
-		System.out.println("Овердрафт: " + this.getOverdraft().getOverdraftLimit() + " Состояние: " + this.getOverdraft().stringOverdraftState());
-		System.out.println("-----------------------------------------------");
+		super.printAccount(accType);
+		this.overdraft.printOverdraftInfo();
 	}
+	
 	
 }
